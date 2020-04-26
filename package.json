@@ -22,5 +22,9 @@
         "sass-loader": "^8.0.0",
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.10"
+    },
+    "dependencies": {
+        "gulp": "^3.9.1",
+        "laravel-elixir": "^6.0.0-18"
     }
 }
