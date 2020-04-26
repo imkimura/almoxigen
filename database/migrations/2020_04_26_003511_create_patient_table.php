@@ -15,6 +15,10 @@ class CreatePatientTable extends Migration
     {
         Schema::create('patient', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('material_id');
+            $table->foreignId('health_unit_id'); 
+            $table->string('name', 100);
+            $table->integer('cpf', 11);
             $table->timestamps();
         });
     }
