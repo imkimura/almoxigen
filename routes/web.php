@@ -27,5 +27,3 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 /** END Admin Routes */
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::resource('patients', 'PatientController');
