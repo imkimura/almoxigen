@@ -4,15 +4,16 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\PatientRequest;
-use App\Patient;
+use App\Http\Requests\HealthUnitRequest;
+use App\HealthUnit;
 use Log;
 
-class PatientController extends Controller
+class HealthUnitController extends Controller
 {
+
     protected $model;
 
-    public function __construct(Patient $model)
+    public function __construct(HealthUnit $model)
     {
         $this->model = $model;
     }
@@ -24,9 +25,9 @@ class PatientController extends Controller
      */
     public function index()
     {
-        $patients = $this->model->all();
+        $healthUnit = $this->model->all();
 
-        return $this->responseAPI('Pacientes listados com sucesso!', 200, $patients);
+        return $this->responseAPI('Unidades de Saude listados com sucesso!', 200, $healthUnit);
     }
 
     /**
@@ -35,15 +36,15 @@ class PatientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PatientRequest $request)
+    public function store(HealthUnitRequest $request)
     {
         try {
 
-            $patient = $this->model->fill($request->all());
+            $healthUnit = $this->model->fill($request->all());
 
-            $patient->save();
+            $healthUnit->save();
 
-            return $this->responseAPI('Paciente inserido com sucesso', 201, $patient);
+            return $this->responseAPI('Unidade de Saude inserido com sucesso', 201, $healthUnit);
 
         } catch (\Exception $e) {
 
@@ -61,9 +62,9 @@ class PatientController extends Controller
      */
     public function show($id)
     {
-        $patient = $this->model->findOrFail($id);
+        $healthUnit = $this->model->findOrFail($id);
 
-        return $this->responseAPI('Paciente listado com sucesso!', 200, $patient);
+        return $this->responseAPI('Paciente listado com sucesso!', 200, $healthUnit);
     }
 
     /**
@@ -76,12 +77,12 @@ class PatientController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            $patient = $this->model->findOrFail($id);
-            $patient->fill($request->all());
+            $healthUnit = $this->model->findOrFail($id);
+            $healthUnit->fill($request->all());
 
-            $patient->save();
+            $healthUnit->save();
 
-            return $this->responseAPI('Paciente modificado com sucesso', 201, $patient);
+            return $this->responseAPI('Unidade de Saude modificado com sucesso', 201, $healthUnit);
 
         } catch (\Exception $e) {
 
@@ -100,11 +101,11 @@ class PatientController extends Controller
     public function destroy($id)
     {
         try {
-            $patient = $this->model->findOrFail($id);
+            $healthUnit = $this->model->findOrFail($id);
 
-            $patient->delete();
+            $healthUnit->delete();
 
-            return $this->responseAPI('Paciente excluido com sucesso', 200);
+            return $this->responseAPI('Unidade de Saude excluido com sucesso', 200);
 
         } catch (\Exception $e) {
 
