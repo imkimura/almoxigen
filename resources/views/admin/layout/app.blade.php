@@ -83,7 +83,7 @@
                         <div class="offset-sm-5 col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Admin</a></li>
-                                <li class="breadcrumb-item active">Pós Graduação</li>
+                                <li class="breadcrumb-item active">Almoxigen</li>
                             </ol>
                         </div>
                         <!-- /.col -->
