@@ -6,15 +6,19 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\PatientRequest;
 use App\Patient;
+use App\HealthUnit;
+use App\Material;
 use Log;
 
 class PatientController extends Controller
 {
     protected $model;
 
-    public function __construct(Patient $model)
+    public function __construct(Patient $model, Material $modelMaterial, HealthUnit $modelHealth)
     {
         $this->model = $model;
+        $this->modelMaterial = $modelMaterial;
+        $this->modelHealth = $modelHealth;
     }
 
     /**
@@ -26,7 +30,31 @@ class PatientController extends Controller
     {
         $patients = $this->model->all();
 
-        return $this->responseAPI('Pacientes listados com sucesso!', 200, $patients);
+        $patients = $patients->map(function($order) {
+            $material = $this->modelMaterial->find($order->material_id)->first();
+            $healthUnit = $this->modelHealth->find($order->health_unit_id)->first();
+
+            $order->nmMaterial = $material->name;
+            $order->nmHealthUnit = $healthUnit->name;
+
+            return $order;
+        });
+
+        return view('admin.patient.index', ['patients' => $patients]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function create()
+    {
+        $materials = $this->modelMaterial->all();
+        $healthUnits = $this->modelHealth->all();
+
+        return view('admin.patient.patient', [
+            'materials' => $materials,
+            'healthUnits' => $healthUnits
+        ]);
     }
 
     /**
@@ -59,11 +87,17 @@ class PatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function edit($id)
     {
         $patient = $this->model->findOrFail($id);
+        $materials = $this->modelMaterial->all();
+        $healthUnits = $this->modelHealth->all();
 
-        return $this->responseAPI('Paciente listado com sucesso!', 200, $patient);
+        return view('admin.patient.patient', [
+            'patient' => $patient,
+            'materials' => $materials,
+            'healthUnits' => $healthUnits
+        ]);
     }
 
     /**
@@ -104,7 +138,7 @@ class PatientController extends Controller
 
             $patient->delete();
 
-            return $this->responseAPI('Paciente excluido com sucesso', 200);
+            return redirect()->route('patients.index')->with('alert');
 
         } catch (\Exception $e) {
 

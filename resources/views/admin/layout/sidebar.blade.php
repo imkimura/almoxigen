@@ -16,7 +16,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-7">
                 <div class="info">
                     <a style="white-space: nowrap;" href="/admin/user" class="d-block">{{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}</a>
                 </div>
@@ -44,7 +44,7 @@
                         @endif
                         >
                         <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p> Dashboard</p>
+                        <p> Home</p>
                     </a>
                 </li>
                 <li class="nav-item">

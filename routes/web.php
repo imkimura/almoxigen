@@ -24,9 +24,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/', 'AdminController@admin');
     Route::get('/dashboard', 'AdminController@index');
 
-    Route::resource('/patients', 'PatientController')->only([
-        'index', 'edit', 'create'
-    ]);
+    Route::resource('patients', 'API\PatientController');
 });
 /** END Admin Routes */
 

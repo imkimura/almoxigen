@@ -16,9 +16,16 @@
     <link rel="stylesheet" href="{{ elixir('css/all-admin.css') }}">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     @yield('css')
 
+    <style>
+        .content-wrapper {
+            background: #fff;
+        }
+    </style>
     <script type="text/javascript">
         var slugify = function(text) {
             text = text.toString().toLowerCase().trim();

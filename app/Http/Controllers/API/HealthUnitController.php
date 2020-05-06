@@ -44,7 +44,7 @@ class HealthUnitController extends Controller
 
             $healthUnit->save();
 
-            return $this->responseAPI('Unidade de Saude inserido com sucesso', 201, $healthUnit);
+            return $this->responseAPI('Unidade de Saude inserida com sucesso', 201, $healthUnit);
 
         } catch (\Exception $e) {
 
@@ -64,7 +64,7 @@ class HealthUnitController extends Controller
     {
         $healthUnit = $this->model->findOrFail($id);
 
-        return $this->responseAPI('Paciente listado com sucesso!', 200, $healthUnit);
+        return $this->responseAPI('Unidade de Saude listada com sucesso!', 200, $healthUnit);
     }
 
     /**
@@ -82,7 +82,7 @@ class HealthUnitController extends Controller
 
             $healthUnit->save();
 
-            return $this->responseAPI('Unidade de Saude modificado com sucesso', 201, $healthUnit);
+            return $this->responseAPI('Unidade de Saude modificada com sucesso', 201, $healthUnit);
 
         } catch (\Exception $e) {
 
@@ -105,7 +105,7 @@ class HealthUnitController extends Controller
 
             $healthUnit->delete();
 
-            return $this->responseAPI('Unidade de Saude excluido com sucesso', 200);
+            return $this->responseAPI('Unidade de Saude excluida com sucesso', 200);
 
         } catch (\Exception $e) {
 

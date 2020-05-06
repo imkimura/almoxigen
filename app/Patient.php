@@ -17,4 +17,13 @@ class Patient extends Model
         'health_unit_id',
     ];
 
+    public function healthUnit()
+    {
+        return $this->hasOne('App\HealthUnit');
+    }
+
+    public function material()
+    {
+        return $this->belongsTo('App\Material');
+    }
 }

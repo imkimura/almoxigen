@@ -12,7 +12,7 @@ elixir(function(mix) {
     mix.styles([
         'tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css',
         'icheck-bootstrap/icheck-bootstrap.min.css',
-        'dist/css/adminlte.min.css',
+        'dist/css/adminlte.css',
         'toastr/toastr.min.css',
         'overlayScrollbars/css/OverlayScrollbars.min.css',
         'daterangepicker/daterangepicker.css',

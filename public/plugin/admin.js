@@ -19,16 +19,14 @@ $(function() {
     }
 
     $('#form-crud-noticia').submit(function(e) {
+
         e.preventDefault();
-        var formData = new FormData(this);
+        // var formData = new FormData(this);
 
         $.ajax({
             type: 'POST',
             url: $('#form-crud-noticia').attr('action'),
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
+            data: $('#form-crud-noticia').serialize(),
             success: function(response) {
                 setTimeout(function() {
                     window.location.href = $('#ip-hf-lc').attr('action');

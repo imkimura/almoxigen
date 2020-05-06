@@ -25,7 +25,7 @@ class PatientRequest extends FormRequest
     {
         return [
             'name'=>'required|string',
-            'cpf'=>'required|numeric',
+            'cpf'=>'required|string',
             'material_id'=>'required|numeric|exists:materials,id',
             'health_unit_id'=>'required|numeric|exists:health_units,id'
         ];

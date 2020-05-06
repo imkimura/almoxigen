@@ -13,33 +13,36 @@
                 <tr>
                     <th>id</th>
                     <th>Nome</th>
-                    <th>Slug</th>
-                    <th>Color</th>
+                    <th>Cpf</th>
+                    <th>Material</th>
+                    <th>Unidade de Saúde</th>
                     <th style="width: 40px"></th>
                 </tr>
             </thead>
             <tbody>
-                {{-- @foreach ($categorias as $categoria) --}}
+                @foreach ($patients as $patient)
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td style="text-align: center;"><span style="padding: 8px 30px; border-radius: 10px; background: ;color: white;"></span></td>
-                    <td><a style="font-size: 24px; color: #0552ff;" href="/admin/category/edit/">
+                    <td>{{ $patient->id }}</td>
+                    <td>{{ $patient->name }}</td>
+                    <td>{{ $patient->cpf }}</td>
+                    <td>{{ $patient->nmMaterial }}</td>
+                    <td>{{ $patient->nmHealthUnit }}</td>
+                    <td><a style="font-size: 24px; color: #0552ff;" href="{{ route('patients.edit', ['patient' =>  $patient->id ]) }}">
                         <i class="fas fa-edit"></i> </a>
                         <a style="font-size: 24px; color: red;"
-                            href="#confirmModal" data-id-categoria=""
+                            href="#confirmModal" data-id-categoria="{{ $patient->id }}"
                             data-toggle="modal">
                             <i class="fas fa-trash-alt"></i></a></td>
                 </tr>
-                {{-- @endforeach --}}
+                @endforeach
             </tbody>
             <tfoot>
                 <tr>
                     <th>id</th>
                     <th>Nome</th>
-                    <th>Slug</th>
-                    <th>Color</th>
+                    <th>Cpf</th>
+                    <th>Material</th>
+                    <th>Unidade de Saúde</th>
                     <th></th>
                 </tr>
             </tfoot>
@@ -66,7 +69,7 @@
             </div>
             <div class="modal-footer">
                 <form action="." id="form-delete-categoria" method="POST">
-                    {{ csrf_field() }}
+                    @csrf
                     {{ method_field('DELETE') }}
                     <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
                     <button type="submit" role="button" class="btn btn-danger">Deletar</button>
@@ -79,16 +82,19 @@
 
 @if (session('alert'))
 <script>
-toastr.error('Operação não pode ser concluída com sucesso.')
+    $(function() {
+        setTimeout(function() {
+            toastr.success('Operação concluída com sucesso.')
+        }, 1000);
+    });
 </script>
-
 @endif
 
 @section('scripts')
     <script>
         $('#confirmModal').on('show.bs.modal', function(e) {
             var idCategoria = $(e.relatedTarget).data('id-categoria');
-            $('#form-delete-categoria').attr('action', '/admin/categories/delete/' + idCategoria);
+            $('#form-delete-categoria').attr('action', '/admin/patients/' + idCategoria);
         });
         $('#table-crud-padrao').DataTable({
         language: {
