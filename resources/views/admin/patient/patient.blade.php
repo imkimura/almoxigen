@@ -21,7 +21,7 @@
             {{ method_field('PUT') }}
             <div class="row" style="padding: 0px 56px;">
                 <div class="col-md-12 text-center mb-4">
-                    <h2 style="font-weight: 700;">Cadastro de Pacientes</h2>
+                    <h2 style="font-weight: 700;">Editar Paciente</h2>
                 </div>
                 <input type="hidden" action="/admin/patients" id="ip-hf-lc">
                 <div class="form-group col-md-12">

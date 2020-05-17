@@ -43,8 +43,28 @@
                             style="background: #50586138 !important;"
                         @endif
                         >
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fas fa-home"></i>
                         <p> Home</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/materials" class="nav-link"
+                        @if((Request::is('admin/materials')) or (Request::is('admin/materials/*')) )
+                            style="background: #50586138 !important;"
+                        @endif
+                        >
+                        <i class="nav-icon fas fa-bookmark"></i>
+                        <p>Materiais</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/healthUnits" class="nav-link"
+                        @if((Request::is('admin/healthUnits')) or (Request::is('admin/healthUnits/*')) )
+                            style="background: #50586138 !important;"
+                        @endif
+                        >
+                        <i class="nav-icon fas fa-hospital"></i>
+                        <p>Unidades de Saúde</p>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -53,8 +73,18 @@
                             style="background: #50586138 !important;"
                         @endif
                         >
-                        <i class="nav-icon fas fa-edit"></i>
+                        <i class="nav-icon fas fa-user-friends"></i>
                         <p>Pacientes</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/reports" class="nav-link"
+                        @if((Request::is('admin/reports')) or (Request::is('admin/reports/*')) )
+                            style="background: #50586138 !important;"
+                        @endif
+                        >
+                        <i class="nav-icon fas fa-chart-bar"></i>
+                        <p>Relatórios</p>
                     </a>
                 </li>
             </ul>

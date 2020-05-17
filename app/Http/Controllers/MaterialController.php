@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\HealthUnitRequest;
-use App\HealthUnit;
+use App\Http\Requests\MaterialRequest;
+use App\Material;
 use Log;
 
-class HealthUnitController extends Controller
+class MaterialController extends Controller
 {
 
     protected $model;
 
-    public function __construct(HealthUnit $model)
+    public function __construct(Material $model)
     {
         $this->model = $model;
     }
@@ -25,9 +25,17 @@ class HealthUnitController extends Controller
      */
     public function index()
     {
-        $healthUnit = $this->model->all();
+        $materials = $this->model->all();
 
-        return $this->responseAPI('Unidades de Saude listados com sucesso!', 200, $healthUnit);
+        return view('admin.material.index', ['materials' => $materials]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function create()
+    {
+        return view('admin.material.material');
     }
 
     /**
@@ -36,15 +44,15 @@ class HealthUnitController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(HealthUnitRequest $request)
+    public function store(MaterialRequest $request)
     {
         try {
 
-            $healthUnit = $this->model->fill($request->all());
+            $material = $this->model->fill($request->all());
 
-            $healthUnit->save();
+            $material->save();
 
-            return $this->responseAPI('Unidade de Saude inserida com sucesso', 201, $healthUnit);
+            return $this->responseAPI('Material inserido com sucesso', 201, $material);
 
         } catch (\Exception $e) {
 
@@ -60,11 +68,26 @@ class HealthUnitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function edit($id)
+    {
+        $materials = $this->model->findOrFail($id);
+
+        return view('admin.material.material', [
+            'material' => $materials
+        ]);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function show($id)
     {
-        $healthUnit = $this->model->findOrFail($id);
+        $material = $this->model->findOrFail($id);
 
-        return $this->responseAPI('Unidade de Saude listada com sucesso!', 200, $healthUnit);
+        return $this->responseAPI('Paciente listado com sucesso!', 200, $material);
     }
 
     /**
@@ -77,12 +100,12 @@ class HealthUnitController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            $healthUnit = $this->model->findOrFail($id);
-            $healthUnit->fill($request->all());
+            $material = $this->model->findOrFail($id);
+            $material->fill($request->all());
 
-            $healthUnit->save();
+            $material->save();
 
-            return $this->responseAPI('Unidade de Saude modificada com sucesso', 201, $healthUnit);
+            return $this->responseAPI('Material modificado com sucesso', 201, $material);
 
         } catch (\Exception $e) {
 
@@ -101,11 +124,11 @@ class HealthUnitController extends Controller
     public function destroy($id)
     {
         try {
-            $healthUnit = $this->model->findOrFail($id);
+            $material = $this->model->findOrFail($id);
 
-            $healthUnit->delete();
+            $material->delete();
 
-            return $this->responseAPI('Unidade de Saude excluida com sucesso', 200);
+            return $this->responseAPI('Material excluido com sucesso', 200);
 
         } catch (\Exception $e) {
 
