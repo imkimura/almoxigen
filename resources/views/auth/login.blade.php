@@ -17,13 +17,23 @@
         background: #eeeeeebd;
         font-size: 24px;
     }
+    img.logo-login {
+        width: 300px;
+        height: auto;
+        margin: 10px 0px 20px;
+        justify-content: center;
+    }
 </style>
 @endsection
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8" style="margin-top: 100px;">
+    <div class="row justify-content-center" style="margin-top: 100px;" >
+        <div class="col-md-12" style="text-align: center;">
+            <img src="{{ asset('/images/logo/almoxigen.png') }}" class="logo-login"/>
+        </div>
+        <div class="col-md-8">
+
             <div class="card">
                 <div class="card-header text-center">{{ __('Login') }}</div>
 
