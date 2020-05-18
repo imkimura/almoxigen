@@ -13,7 +13,6 @@
                     <th>Cpf</th>
                     <th>Material</th>
                     <th>Unidade de Saúde</th>
-                    <th style="width: 40px"></th>
                 </tr>
             </thead>
             <tbody>
@@ -26,15 +25,6 @@
                 </tr>
                 @endforeach
             </tbody>
-            <!-- <tfoot>
-                <tr>
-                    <th>Nome</th>
-                    <th>Cpf</th>
-                    <th>Material</th>
-                    <th>Unidade de Saúde</th>
-                    <th></th>
-                </tr>
-            </tfoot> -->
             </table>
         </div>
         <!-- /.card-body -->
@@ -44,39 +34,26 @@
         <!-- /.card-header -->
         <div class="card-body" >
             <table id="table-healthunit" class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Pacientes</th>
-                    <th>Geri-P</th>
-                    <th>Geri-M</th>
-                    <th>Geri-G</th>
-                    <th>Geri-EG</th>
-                    <th>Inf-P</th>
-                    <th>Inf-M</th>
-                    <th>Inf-G</th>
-                    <th>Inf-EG</th>
-                    <th style="width: 40px"></th>
-                </tr>
-            </thead>
-            <tbody>
-            {{ $healthUnits->materialsCount }}
-            </tbody>
-            <!-- <tfoot>
-                <tr>
-                    <th>Nome</th>
-                    <th>Pacientes</th>
-                    <th>Geri-P</th>
-                    <th>Geri-M</th>
-                    <th>Geri-G</th>
-                    <th>Geri-EG</th>
-                    <th>Inf-P</th>
-                    <th>Inf-M</th>
-                    <th>Inf-G</th>
-                    <th>Inf-EG</th>
-                    <th></th>
-                </tr>
-            </tfoot> -->
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Pacientes</th>
+                        @foreach ($materials as $material)
+                            <th>{{ $material->name }}</th>
+                        @endforeach
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach ($healthUnits as $healthUnit)
+                    <tr>
+                        <td>{{ $healthUnit->name }}</td>
+                        <td>{{ $healthUnit->patientsCount }}</td>
+                        @foreach ($healthUnit->materialsCount as $count)
+                            <td>{{ $count }}</td>
+                        @endforeach
+                    </tr>
+                @endforeach
+                </tbody>
             </table>
         </div>
         <!-- /.card-body -->

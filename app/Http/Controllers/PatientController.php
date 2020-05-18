@@ -28,17 +28,11 @@ class PatientController extends Controller
      */
     public function index()
     {
-        $patients = $this->model->all();
 
-        $patients = $patients->map(function($order) {
-            $material = $this->modelMaterial->find($order->material_id)->first();
-            $healthUnit = $this->modelHealth->find($order->health_unit_id)->first();
-
-            $order->nmMaterial = $material->name;
-            $order->nmHealthUnit = $healthUnit->name;
-
-            return $order;
-        });
+        $patients = $this->model->select('patients.id', 'patients.name', 'patients.cpf', 'm.name as nmMaterial', 'hu.name as nmHealthUnit')
+                                ->join('materials as m', 'm.id', '=', 'patients.material_id')
+                                ->join('health_units as hu', 'hu.id', 'patients.health_unit_id')
+                                ->get();
 
         return view('admin.patient.index', ['patients' => $patients]);
     }

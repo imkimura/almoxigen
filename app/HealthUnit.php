@@ -13,4 +13,9 @@ class HealthUnit extends Model
     protected $fillable = [
         'name'
     ];
+
+    public function patients()
+    {
+        return $this->hasMany('App\Patient');
+    }
 }
