@@ -31,6 +31,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::resource('healthUnits', 'HealthUnitController');
 
     Route::get('reports', 'ReportController@index');
+
+    Route::get('reports/patients', 'ReportController@patients')->name('reports.patients');
+
+    Route::get('reports/healthUnits', 'ReportController@healthUnits')->name('reports.healthUnits');
 });
 /** END Admin Routes */
 

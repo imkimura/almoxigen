@@ -3,9 +3,13 @@
 @section('content')
 <div class="row" style="padding: 60px 47px;">
     <div class="card" style="width: 100%;">
-    <h3>Pacientes</h3>
         <!-- /.card-header -->
         <div class="card-body" >
+            <h3>Pacientes</h3>
+            <form action="{{ route('reports.patients') }}" method="GET">
+                @csrf
+                <button type="submit" class="btn btn-success text-right" style="margin-bottom: 10px">Exportar CSV</button>
+            </form>
             <table id="table-patients" class="table table-bordered table-striped">
             <thead>
                 <tr>
@@ -30,9 +34,14 @@
         <!-- /.card-body -->
     </div>
     <div class="card" style="width: 100%;">
-    <h3>Unidades</h3>
+
         <!-- /.card-header -->
         <div class="card-body" >
+            <h3 class="text-left">Unidades</h3>
+            <form action="{{ route('reports.healthUnits') }}" method="GET">
+                @csrf
+                <button type="submit" class="btn btn-success text-right" style="margin-bottom: 10px">Exportar CSV</button>
+            </form>
             <table id="table-healthunit" class="table table-bordered table-striped">
                 <thead>
                     <tr>
