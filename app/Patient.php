@@ -15,6 +15,7 @@ class Patient extends Model
         'cpf',
         'material_id',
         'health_unit_id',
+        'updated_at',
     ];
 
     public function healthUnit()
