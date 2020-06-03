@@ -54,6 +54,10 @@
                     <label for="exampleInputEmail1">Nome</label>
                     <input type="text" class="form-control" id="crud-cp-name" name="name" placeholder="Digite o nome da unidade de saude..." required>
                 </div>
+                <div class="form-group col-md-12">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input type="text" class="form-control" id="crud-cp-name" name="email" placeholder="Digite o email da unidade de saude..." required>
+                </div>
                 <div class="card-footer col-md-12 text-right mt-3">
                     <a href="/admin/healthUnits" type="button" id="btn-submit-crud-noticia" class="btn btn-danger">Cancelar</a>
                     <button type="submit" id="btn-submit-crud-noticia" class="btn btn-primary">Salvar</button>
