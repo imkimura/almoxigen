@@ -28,6 +28,10 @@
                     <label for="exampleInputEmail1">Nome</label>
                     <input value="{{ $healthUnit->name }}" type="text" class="form-control" id="crud-cp-name" name="name" required>
                 </div>
+                <div class="form-group col-md-12">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input value="{{ $healthUnit->email }}" type="text" class="form-control" id="crud-cp-name" name="email" required>
+                </div>
                 <div class="card-footer col-md-12 text-right mt-3">
                     <a href="{{ route('healthUnits.index') }}" type="button" id="btn-submit-crud-noticia" class="btn btn-danger">Cancelar</a>
                     <button type="submit" id="btn-submit-crud-noticia" class="btn btn-primary">Salvar</button>

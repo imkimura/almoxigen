@@ -18,13 +18,14 @@
                         <td>{{ $healthUnit->name }}</td>
                         <!-- {{-- @foreach ($patients as $patient) --}}
                             {{-- @if ($patient->health_unit_id == $healthUnit->id) --}}
-                                <td>{{-- $patients->updated_at --}}</td> 
+                                <td>{{-- $patients->updated_at --}}</td>
                             {{-- @endif --}}
                         {{-- @endforeach --}} -->
                         <!-- isso ta uma bosta! -->
                         <td>02/06/2020<td>
                         <td>
-                            <form action="" method="POST">
+                            <form action="{{ route('mail.warning', ['unit' =>  $healthUnit->id ]) }}" method="POST">
+                                @csrf
                                 <button type="submit" class="btn btn-success text-right" style="margin-bottom: 10px">Enviar Aviso</button>
                             </form>
                         </td>

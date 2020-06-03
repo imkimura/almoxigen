@@ -22,6 +22,7 @@ Auth::routes();
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     Route::get('/', 'AdminController@admin');
+
     Route::get('/dashboard', 'AdminController@index');
 
     Route::resource('patients', 'PatientController');
@@ -35,6 +36,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('reports/patients', 'ReportController@patients')->name('reports.patients');
 
     Route::get('reports/healthUnits', 'ReportController@healthUnits')->name('reports.healthUnits');
+
+    Route::post('dashboard/mail/{unit}', 'ContactController@mail')->name('mail.warning');
 });
 /** END Admin Routes */
 

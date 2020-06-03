@@ -11,7 +11,9 @@ class HealthUnit extends Model
     public $primaryKey = 'id';
 
     protected $fillable = [
-        'name'
+        'id',
+        'name',
+        'email'
     ];
 
     public function patients()

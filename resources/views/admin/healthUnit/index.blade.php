@@ -13,6 +13,7 @@
                 <tr>
                     <th>id</th>
                     <th>Nome</th>
+                    <th>Email</th>
                     <th style="width: 40px"></th>
                 </tr>
             </thead>
@@ -21,6 +22,7 @@
                 <tr>
                     <td>{{ $healthUnit->id }}</td>
                     <td>{{ $healthUnit->name }}</td>
+                    <td>{{ $healthUnit->email }}</td>
                     <td><a style="font-size: 24px; color: #0552ff;" href="{{ route('healthUnits.edit', ['healthUnit' =>  $healthUnit->id ]) }}">
                         <i class="fas fa-edit"></i> </a>
                         <a style="font-size: 24px; color: red;"
@@ -34,6 +36,7 @@
                 <tr>
                     <th>id</th>
                     <th>Nome</th>
+                    <th>Email</th>
                     <th></th>
                 </tr>
             </tfoot>

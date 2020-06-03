@@ -17,12 +17,12 @@ class AdminController extends Controller
 
     public function admin()
     {
-        return redirect('/admin/dashboard');        
+        return redirect('/admin/dashboard');
     }
 
     public function index()
     {
-        $healthUnits = $this->healthUnitModel->all();
+        $healthUnits = $this->healthUnitModel->orderBy('updated_at', 'asc')->get();
 
 /*        $patients = $this->patientModel->select('patients.health_unit_id', 'p.MaxDate', function($query){
                                         $query->select('health_unit_id', 'MAX(updated_at) as MaxDate')
@@ -36,7 +36,7 @@ class AdminController extends Controller
                                     'patients' => $patients]); */
 
         return view('admin.index', ['healthUnits' => $healthUnits]);
-                                    
+
     }
 
     public function user()
