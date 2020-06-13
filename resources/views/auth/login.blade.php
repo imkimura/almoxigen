@@ -83,16 +83,16 @@
                             </div>
                         </div> --}}
 
-                        <div class="form-group row mb-0">
+                        <div class="form-group row mb-0 text-center">
                             <div class="offset-md-3 col-md-6">
                                 <button type="submit" class="btn btn-primary col-12">
                                    Entrar
                                 </button>
-                                {{-- @if (Route::has('password.request'))
+                                @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
+                                        {{ __('Esqueceu a Senha?') }}
                                     </a>
-                                @endif --}}
+                                @endif
                             </div>
                         </div>
                     </form>
