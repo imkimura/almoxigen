@@ -24,7 +24,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "gulp": "^3.9.1",
+        "gulp": "^4.0.2",
         "laravel-elixir": "^6.0.0-18"
     }
 }
